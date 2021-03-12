@@ -1,6 +1,6 @@
 import socket
 from time import time
-from asyncio import sleep
+from asyncio import sleep, run
 
 
 async def recvmsg(conn, bytescount, timeout):
@@ -28,7 +28,7 @@ async def recvmsg(conn, bytescount, timeout):
     return source
 
 
-def main():
+async def main():
     with socket.socket() as sock:
         sock.bind(('localhost', 8000))
         sock.listen(1)
@@ -42,4 +42,4 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    run(main())
