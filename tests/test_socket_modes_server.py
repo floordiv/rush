@@ -46,12 +46,11 @@ async def main():
 
         while True:
             received = await recvmsg(conn, 1, .7)
-
-            if not received:
-                print('disconnected')
-                break
-
             print('received:', received)
+
+            if received is None:
+                print('nothing received, timeout occurred')
+                conn.close()
 
 
 if __name__ == '__main__':
