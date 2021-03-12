@@ -114,7 +114,7 @@ class AEpollServer:
             raise NotImplementedError('unimplemented epoll signal: ' + str(event))
 
     def handler(self, on_event=all):
-        async def decorator(coroutine):
+        def decorator(coroutine):
             self.handlers[on_event] = coroutine
 
             return coroutine
