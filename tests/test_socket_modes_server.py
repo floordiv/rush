@@ -38,7 +38,7 @@ def main():
         print('new conn from', addr)
 
         while True:
-            print(recvmsg(conn, 1, .7))
+            print(await recvmsg(conn, 1, .7))
 
 
 if __name__ == '__main__':
