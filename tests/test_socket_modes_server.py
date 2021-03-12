@@ -15,6 +15,7 @@ async def recvmsg(conn, bytescount, timeout):
                 used_timeout = 0
 
             received = conn.recv(bytescount - bytes_received)
+            print('almost received:', received)
             source += received
             bytes_received += len(received)
         except BlockingIOError:
@@ -38,7 +39,13 @@ async def main():
         print('new conn from', addr)
 
         while True:
-            print(await recvmsg(conn, 1, .7))
+            received = await recvmsg(conn, 1, .7)
+
+            if not received:
+                print('disconnected')
+                break
+
+            print('received:', received)
 
 
 if __name__ == '__main__':
