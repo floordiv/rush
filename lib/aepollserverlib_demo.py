@@ -1,4 +1,4 @@
-import aepollserver
+from lib import aepollserver
 from lib.msgproto import recvmsg, sendmsg
 
 """
