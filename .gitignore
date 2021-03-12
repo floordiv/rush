@@ -125,3 +125,4 @@ dmypy.json
 *.xml
 *.iml
 linesofcode.py
+servers/resolver/registry.sqlite3
