@@ -52,6 +52,8 @@ class AEpollServer:
             for fileno, event in events:
                 event_type = self.get_event_type(fileno, event)
 
+                print('new event:', event_type)
+
                 if all in self.handlers:
                     handler = self.handlers[all]
                     await handler(event_type, self.conns[fileno])
