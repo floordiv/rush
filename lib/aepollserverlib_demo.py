@@ -7,7 +7,7 @@ from lib.msgproto import recvmsg, sendmsg
 this file is a good example (or even demo) of the work of the aepollserver lib
 """
 
-epoll_server = aepollserver.AEpollServer(('localhost', 8000))
+epoll_server = aepollserver.AEpollServer(('0.0.0.0', 8000))
 
 
 @epoll_server.handler(on_event=aepollserver.CONNECT)
