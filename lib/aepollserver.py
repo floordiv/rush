@@ -61,12 +61,16 @@ class AEpollServer:
 
                 handler = self.handlers.get(event_type)
 
+                print('I even got a handler!', handler)
+
                 if handler is None:
                     # no attached handlers registered
                     continue
 
                 if event_type == CONNECT:
+                    print('I event understood it\'s connect event')
                     conn, addr = self.server_sock.accept()
+                    print('I event accepted')
 
                     if await handler(CONNECT, conn) == DENY_CONN:
                         # connection hasn't been accepted
