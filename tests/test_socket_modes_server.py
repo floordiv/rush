@@ -9,7 +9,7 @@ async def recvmsg(conn, bytescount, timeout):
     used_timeout = 0
     started_at = time()
 
-    while (bytes_received < bytescount) or (used_timeout < timeout):
+    while (bytes_received < bytescount) and (used_timeout < timeout):
         try:
             if used_timeout:
                 used_timeout = 0
