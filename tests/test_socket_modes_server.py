@@ -15,6 +15,11 @@ async def recvmsg(conn, bytescount, timeout):
                 used_timeout = 0
 
             received = conn.recv(bytescount - bytes_received)
+
+            if not received:
+                print('nooo')
+                break
+
             print('almost received:', received)
             source += received
             bytes_received += len(received)
