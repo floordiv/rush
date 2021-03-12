@@ -30,7 +30,8 @@ async def recvbytes(sock, bytescount, timeout):
     used_timeout = 0
     started_at = time()
 
-    while (bytes_received < bytescount) and ((used_timeout < timeout) if timeout else True):
+    while (bytes_received < bytescount) and ((used_timeout < timeout)
+          if timeout is not None else True):
         try:
             if used_timeout:
                 used_timeout = 0
@@ -44,7 +45,7 @@ async def recvbytes(sock, bytescount, timeout):
             if used_timeout is not None:
                 used_timeout += time() - started_at
 
-    if used_timeout >= timeout:
+    if timeout is not None and used_timeout >= timeout:
         return None
 
     return source
