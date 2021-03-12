@@ -16,11 +16,12 @@ async def recvmsg(conn, bytescount, timeout):
 
             received = conn.recv(bytescount - bytes_received)
 
+            print('almost received:', received)
+            
             if not received:
                 print('nooo')
                 break
 
-            print('almost received:', received)
             source += received
             bytes_received += len(received)
         except BlockingIOError:
