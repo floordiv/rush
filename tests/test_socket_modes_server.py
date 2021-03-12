@@ -51,6 +51,7 @@ async def main():
             if received is None:
                 print('nothing received, timeout occurred')
                 conn.close()
+                break
 
 
 if __name__ == '__main__':
