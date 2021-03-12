@@ -141,6 +141,8 @@ def handshake(i_am: str):
     """
 
     def decorator(handler):
+        print('registering coroutine:', handler)
+
         async def wrapper(event_type, conn: socket):
             if event_type != CONNECT:
                 return await handler(event_type, conn)
@@ -189,8 +191,10 @@ async def do_handshake(conn, node_name=r'\w+'):
     """
 
     try:
+        print('sent ')
         conn.send(b'\x69\x04\x02\x00')
         server_response = await recvbytes(conn, 4, 1)
+        print('received, lol')
 
         if server_response != b'\x00\x02\x04\x69':
             conn.close()
