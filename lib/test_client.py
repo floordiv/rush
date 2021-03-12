@@ -17,5 +17,4 @@ async def main():
         print('received:', response)
 
 
-if __name__ == '__main__':
-    run(main())
+run(main())
