@@ -1,3 +1,5 @@
+from asyncio import run
+
 from lib import aepollserver
 from lib.msgproto import recvmsg, sendmsg
 
@@ -28,4 +30,4 @@ async def handle_disconnect(_, conn):
     print('disconnected:', conn.getpeername())
 
 
-epoll_server.start()
+run(epoll_server.start())
